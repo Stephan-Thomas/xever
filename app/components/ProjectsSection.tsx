@@ -72,7 +72,7 @@ const ProjectsSection = () => {
             previewUrl={project.previewUrl || ""}
           />
         ))}
-      </div>
+      </div(
     </>
   );
 };
