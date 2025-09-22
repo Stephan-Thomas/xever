@@ -59,8 +59,18 @@ const projectsData = [
 const ProjectsSection = () => {
   return (
     <>
-      <h2>My Projects</h2>
-      <div>
+      <h2 className="text-center text-4xl text-white font-bold mt-4 mb-8 md:mb-12">
+        My Projects
+      </h2>
+      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
+        <button className="rounded-full border-2 border-purple-500 px-6 py-3 text-xl cursor-pointer">
+          All
+        </button>
+        <button className="rounded-full border-2 border-slate-600 hover:border-white px-6 py-3 text-xl cursor-pointer">
+          Web
+        </button>
+      </div>
+      <div className="grid md:grid-cols-3 gap-8 md:gap-12">
         {projectsData.map((project) => (
           <ProjectCard
             key={project.id}
@@ -72,7 +82,7 @@ const ProjectsSection = () => {
             previewUrl={project.previewUrl || ""}
           />
         ))}
-      </div(
+      </div>
     </>
   );
 };

@@ -65,17 +65,19 @@ const About = () => {
         />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-          <p className="text-base lg:text-lg">
-            I specialize in Pull Stack development—mostly because I couldn’t
-            choose between frontend dopamine hits and backend existential
-            crises. If you're looking for: Pixel-perfect UIs that somehow still
-            break on mobile <br /> ✔️ Clean backend logic duct-taped with
-            console.logs
-            <br /> ✔️ Random commits at 3AM with messages like fix?? <br /> ✔️
-            And an unhealthy obsession with dark mode <br /> ✔️✔️ Then
-            congrats—you just found your dev. I don’t just write code. I vibe
-            with it. Sometimes it vibes back. Most times it throws errors. But I
-            always win. Eventually. Sometimes.
+          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl leading-relaxed">
+            I am one of the mujahadeen brothers. I specialize in Pull Stack
+            development—mostly because I couldn’t choose between frontend
+            dopamine hits and backend existential crises.
+            <br />
+            If you're looking for:
+            <br />
+            - Clean backend logic duct-taped with console.logs
+            <br /> - Random commits at 3AM with messages like fix??
+            <br /> - And an unhealthy obsession with dark mode
+            <br /> Then congrats — you just found your dev. I don’t just write
+            code. I vibe with it. Sometimes it vibes back. Most times it throws
+            errors. But I always win. Eventually. Sometimes.
           </p>
           <div className="flex flex-row mt-8">
             <TabButton
