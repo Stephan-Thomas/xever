@@ -8,14 +8,17 @@ type TabButtonProps = {
 
 const TabButton = ({ active, selectTab, children }: TabButtonProps) => {
   const buttonClasses = active
-    ? "text-white border-b border-purple-500"
+    ? "text-white border-b-2 border-purple-500"
     : "text-[#ADB7BE]";
 
   return (
-    <button onClick={selectTab}>
-      <p className={`mr-3 font-semibold hover:text-white ${buttonClasses}`}>
-        {children}
-      </p>
+    <button
+      type="button"
+      onClick={selectTab}
+      className={`pb-2 font-semibold hover:text-white transition-colors ${buttonClasses}`}
+      aria-pressed={active}
+    >
+      {children}
     </button>
   );
 };
