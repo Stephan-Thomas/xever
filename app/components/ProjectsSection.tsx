@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projectsData = [
   {
@@ -75,10 +76,22 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="scroll-mt-24 py-12">
-      <h2 className="text-center text-4xl text-white font-bold mb-8 md:mb-12">
+      <motion.h2 
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="text-center text-4xl text-white font-bold mb-8 md:mb-12"
+      >
         My Projects
-      </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
+      </motion.h2>
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="text-white flex flex-row justify-center items-center gap-2 py-6"
+      >
         {tags.map((projectTag) => (
           <button
             key={projectTag}
@@ -94,19 +107,40 @@ const ProjectsSection = () => {
             {projectTag}
           </button>
         ))}
-      </div>
-      <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            imgUrl={project.image}
-            gitUrl={project.gitUrl}
-            previewUrl={project.previewUrl}
-          />
-        ))}
-      </div>
+      </motion.div>
+      <motion.div layout className="grid md:grid-cols-3 gap-8 md:gap-12">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: -50 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.15,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
+              whileHover={{ 
+                scale: 1.05, 
+                transition: { duration: 0.2, delay: 0 } 
+              }}
+              className="h-full"
+            >
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imgUrl={project.image}
+                gitUrl={project.gitUrl}
+                previewUrl={project.previewUrl}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 };
