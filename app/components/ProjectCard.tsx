@@ -18,35 +18,45 @@ const ProjectCard = ({
   previewUrl,
 }: Props) => {
   return (
-    <div>
-      <div
-        className="h-52 md:h-72 rounded-t-xl relative bg-cover bg-center group"
-        style={{ backgroundImage: `url(${imgUrl})` }}
-      >
-        <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818]/80 opacity-0 invisible flex group-hover:visible group-hover:opacity-100 transition-all duration-300">
-          {gitUrl ? (
+    <div className="bg-[#2a2c3a] mx-auto w-[95%] overflow-hidden flex flex-col h-full group">
+      {/* Top Header: Title and Category */}
+      <div className="flex justify-between items-start px-6 pt-6 pb-4">
+        <h3 className="text-white text-2xl font-bold">{title}</h3>
+        <p className="text-[#a1a1aa] text-xs font-semibold tracking-wide uppercase mt-1">
+          {description.split(" ")[0]}, {description.split(" ")[1]}
+        </p>
+      </div>
+      
+      {/* Bottom Image Area */}
+      <div className="relative w-full aspect-[4/3] mt-auto">
+        <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
+          <div
+            className="w-full h-full bg-cover bg-top"
+            style={{ backgroundImage: `url(${imgUrl})` }}
+          />
+        </div>
+        
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-[#0a0a0a]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+          {gitUrl && (
             <Link
               href={gitUrl}
               aria-label={`View source for ${title}`}
-              className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-sm transition-colors"
             >
-              <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+              <CodeBracketIcon className="w-6 h-6 text-white" />
             </Link>
-          ) : null}
-          {previewUrl ? (
+          )}
+          {previewUrl && (
             <Link
               href={previewUrl}
               aria-label={`View live preview of ${title}`}
-              className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+              className="w-12 h-12 rounded-full bg-purple-600 hover:bg-purple-700 flex items-center justify-center backdrop-blur-sm transition-colors"
             >
-              <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+              <EyeIcon className="w-6 h-6 text-white" />
             </Link>
-          ) : null}
+          )}
         </div>
-      </div>
-      <div className="text-white rounded-b-xl bg-[#181818] py-6 px-4 min-h-40">
-        <h5 className="text-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE]">{description}</p>
       </div>
     </div>
   );

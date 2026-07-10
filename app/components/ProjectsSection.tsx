@@ -7,13 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
+    title: "Edumonitor",
     description:
-      "A responsive portfolio built with React components, animated hero text, and project showcases.",
-    image: "/images/page.png",
+      "An Intelligent Student Performance Monitoring System with Multi-Factor Attendance Verification.",
+    image: "/images/edimonitor2.png",
     tag: ["All", "Web"],
-    gitUrl: "https://www.google.com",
-    previewUrl: "https://www.google.com",
+    gitUrl: "https://github.com/Stephan-Thomas/edu-monitor",
+    previewUrl: "https://edu-monitor-nine.vercel.app/",
   },
   {
     id: 2,
@@ -67,80 +67,87 @@ const projectsData = [
 ];
 
 const ProjectsSection = () => {
-  const [tag, setTag] = useState("All");
-  const tags = ["All", "Web", "Mobile"];
-  const filteredProjects = useMemo(
-    () => projectsData.filter((project) => project.tag.includes(tag)),
-    [tag]
-  );
+  // Split projects for the two-column masonry layout
+  const leftColumnProjects = projectsData.filter((_, i) => i % 2 === 0);
+  const rightColumnProjects = projectsData.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section id="projects" className="scroll-mt-24 py-12">
-      <motion.h2 
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="text-center text-4xl text-white font-bold mb-8 md:mb-12"
-      >
-        My Projects
-      </motion.h2>
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="text-white flex flex-row justify-center items-center gap-2 py-6"
-      >
-        {tags.map((projectTag) => (
-          <button
-            key={projectTag}
-            type="button"
-            onClick={() => setTag(projectTag)}
-            className={`rounded-full border-2 px-6 py-3 text-base sm:text-xl cursor-pointer transition-colors ${
-              tag === projectTag
-                ? "border-purple-500 text-white"
-                : "border-slate-600 text-[#ADB7BE] hover:border-white hover:text-white"
-            }`}
-            aria-pressed={tag === projectTag}
-          >
-            {projectTag}
-          </button>
-        ))}
-      </motion.div>
-      <motion.div layout className="grid md:grid-cols-3 gap-8 md:gap-12">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
+    <section id="projects" className="scroll-mt-24 py-24 sm:py-32 bg-[#232532]">
+      <div className="container mx-auto px-6 md:px-12 xl:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
+          {/* Left Column */}
+          <div className="flex flex-col gap-8 md:gap-12 lg:gap-16">
+            {/* Header Block inside the left column */}
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: -50 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.5, 
-                delay: index * 0.15,
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-              }}
-              whileHover={{ 
-                scale: 1.05, 
-                transition: { duration: 0.2, delay: 0 } 
-              }}
-              className="h-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="pt-4 pb-12"
             >
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                imgUrl={project.image}
-                gitUrl={project.gitUrl}
-                previewUrl={project.previewUrl}
-              />
+              <p className="text-[#a1a1aa] text-sm uppercase tracking-widest font-semibold mb-6 flex items-center">
+                <span className="w-4 h-px bg-[#a1a1aa] mr-3"></span> Portfolio
+              </p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-6">
+                All Creative Works,
+                <br />
+                <span className="text-[#a1a1aa] font-normal">
+                  Selected projects.
+                </span>
+              </h2>
+              <p className="text-[#a1a1aa] text-sm leading-relaxed mb-10 max-w-sm">
+                A selection of recent projects where I've handled both product
+                design and full-stack development. Each project reflects my
+                focus on creating intuitive, high-performing digital
+                experiences.
+              </p>
             </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+
+            {/* Left Column Projects */}
+            {leftColumnProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="w-full"
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  imgUrl={project.image}
+                  gitUrl={project.gitUrl}
+                  previewUrl={project.previewUrl}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right Column */}
+          <div className="flex flex-col gap-8 md:gap-12 lg:gap-16 pt-0 md:pt-32">
+            {/* Right Column Projects */}
+            {rightColumnProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="w-full"
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  imgUrl={project.image}
+                  gitUrl={project.gitUrl}
+                  previewUrl={project.previewUrl}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

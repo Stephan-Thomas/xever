@@ -1,37 +1,45 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 
 const navLinks = [
   {
-    title: "About",
-    path: "#about",
+    title: "Services",
+    path: "#services",
   },
   {
-    title: "Projects",
+    title: "Works",
     path: "#projects",
   },
   {
-    title: "Contact",
-    path: "#contacts",
+    title: "Blog",
+    path: "#blog",
   },
 ];
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/70 backdrop-blur-md border-b border-[#33353F]/50 transition-all">
-      <div className="container flex flex-wrap items-center justify-between mx-auto px-6 py-4">
+    <nav className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#0a0a0a]/90 backdrop-blur-md py-4" : "bg-transparent py-6 md:py-10"}`}>
+      <div className="container mx-auto px-6 md:px-12 xl:px-24 flex items-center justify-between">
         <Link
           href="/"
-          className="text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 font-extrabold hover:opacity-80 transition-opacity"
+          className="text-2xl font-extrabold tracking-tight text-purple-600 hover:text-purple-500 transition-colors"
         >
-          Stephan
+          Stephan.
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
@@ -39,26 +47,35 @@ const Navbar = () => {
               type="button"
               aria-label="Open navigation menu"
               onClick={() => setNavbarOpen(true)}
-              className="flex items-center px-3 py-2 border rounded-lg border-slate-200/50 text-slate-200 hover:text-white hover:border-white transition-colors"
+              className="flex items-center text-slate-200 hover:text-white transition-colors"
             >
-              <Bars3Icon className="h-6 w-6" />
+              <Bars3Icon className="h-8 w-8" />
             </button>
           ) : (
             <button
               type="button"
               aria-label="Close navigation menu"
               onClick={() => setNavbarOpen(false)}
-              className="flex items-center px-3 py-2 border rounded-lg border-slate-200/50 text-slate-200 hover:text-white hover:border-white transition-colors"
+              className="flex items-center text-slate-200 hover:text-white transition-colors"
             >
-              <XMarkIcon className="h-6 w-6" />
+              <XMarkIcon className="h-8 w-8" />
             </button>
           )}
         </div>
-        <div className="menu hidden md:block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 bg-transparent">
+        <div className="menu hidden md:block" id="navbar">
+          <ul className="flex flex-row space-x-10">
             {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
+              <li key={index} className="relative group">
+                <Link
+                  href={link.path}
+                  className={`text-lg font-medium transition-colors ${index === 0 ? "text-white" : "text-[#71717a] hover:text-white"}`}
+                >
+                  {link.title}
+                </Link>
+                {/* Active dot indicator (mocked as active on the first item) */}
+                {index === 0 && (
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                )}
               </li>
             ))}
           </ul>
