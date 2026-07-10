@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React from "react";
 import ProjectCard from "./ProjectCard";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const projectsData = [
   {
@@ -96,7 +96,7 @@ const ProjectsSection = () => {
                 </span>
               </h2>
               <p className="text-[#a1a1aa] text-sm leading-relaxed mb-10 max-w-sm">
-                A selection of recent projects where I've handled both product
+                A selection of recent projects where I&apos;ve handled both product
                 design and full-stack development. Each project reflects my
                 focus on creating intuitive, high-performing digital
                 experiences.

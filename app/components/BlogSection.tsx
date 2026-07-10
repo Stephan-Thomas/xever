@@ -80,7 +80,7 @@ const BlogSection = () => {
               <span className="w-4 h-px bg-[#a1a1aa] mr-3"></span> Blog
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-2">
-              What's new?
+              What&apos;s new?
             </h2>
             <h3 className="text-2xl sm:text-3xl font-light text-[#a1a1aa]">
               My blog and news.

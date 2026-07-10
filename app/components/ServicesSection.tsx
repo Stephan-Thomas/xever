@@ -97,7 +97,7 @@ const ServicesSection = () => {
             </h2>
             <p className="text-[#a1a1aa] text-sm leading-relaxed mb-10 max-w-sm">
               Feel free to reach out for project inquiries, collaborations, or
-              just a friendly chat. I'm always excited to discuss new
+              just a friendly chat. I&apos;m always excited to discuss new
               opportunities.
             </p>
             <a
@@ -130,7 +130,7 @@ const ServicesSection = () => {
             viewport={{ once: true }}
           >
             <p className="text-xl sm:text-2xl font-medium leading-relaxed mb-8">
-              You can't use up creativity, the more you use, more you have in
+              You can&apos;t use up creativity, the more you use, more you have in
               your signifant mind.
             </p>
             <p className="text-[#a1a1aa] text-sm leading-relaxed mb-12 max-w-sm">

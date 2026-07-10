@@ -31,10 +31,10 @@ const ContactSection = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-6">
               Got a project?
               <br />
-              <span className="text-[#a1a1aa] font-normal">Let's talk.</span>
+              <span className="text-[#a1a1aa] font-normal">Let&apos;s talk.</span>
             </h2>
             <p className="text-[#a1a1aa] text-sm leading-relaxed mb-16 max-w-sm">
-              I'm currently available for new opportunities and interesting
+              I&apos;m currently available for new opportunities and interesting
               projects. Feel free to reach out — whether you have a clear brief
               or just a rough idea.
             </p>
