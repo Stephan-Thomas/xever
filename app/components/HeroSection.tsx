@@ -8,15 +8,15 @@ import { TypeAnimation } from "react-type-animation";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32 flex items-center min-h-screen bg-[#2b2d3a]">
-      <div className="container mx-auto px-6 md:px-12 xl:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-center w-full">
+    <section className="pt-28 md:pt-36 lg:pt-32 pb-0 flex flex-col justify-end min-h-screen bg-[#2b2d3a] overflow-hidden relative">
+      <div className="container mx-auto px-6 md:px-10 xl:px-16 flex-1 flex flex-col justify-end">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0 items-end w-full max-w-7xl mx-auto">
           {/* Left Column: Name and Socials */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="order-2 lg:order-1 flex flex-col justify-center h-full pt-8 lg:pt-0"
+            className="order-2 lg:order-1 flex flex-col justify-center h-full pb-12 lg:pb-24 pt-4 lg:pt-0 relative z-20 pointer-events-auto"
           >
             <h1 className="text-white text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.1] tracking-tight mb-6 min-h-[160px] md:min-h-[190px] lg:min-h-[200px]">
               <TypeAnimation
@@ -90,18 +90,18 @@ const HeroSection = () => {
 
           {/* Middle Column: Portrait */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="order-1 lg:order-2 place-self-center w-full max-w-sm mx-auto relative z-10"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="order-1 lg:order-2 self-end w-full flex justify-center items-end relative z-10 lg:-mx-8 xl:-mx-16 pointer-events-none"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden">
+            <div className="relative w-full max-w-[360px] sm:max-w-[440px] md:max-w-[500px] lg:max-w-[560px] xl:max-w-[620px] 2xl:max-w-[660px] h-[500px] sm:h-[580px] md:h-[640px] lg:h-[700px] xl:h-[760px] flex items-end justify-center">
               <Image
-                src="/images/bit.png"
+                src="/images/nobg1.png"
                 alt="Portrait of Stephan"
-                className="object-contain"
+                className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.55)]"
                 fill
-                sizes="(max-width: 1024px) 100vw, 33vw"
+                sizes="(max-width: 1024px) 100vw, 45vw"
                 priority
               />
             </div>
@@ -112,7 +112,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="order-3 lg:order-3 flex flex-col justify-center text-left pt-8 lg:pt-0"
+            className="order-3 lg:order-3 flex flex-col justify-center text-left pb-12 lg:pb-24 pt-4 lg:pt-0 relative z-20 pointer-events-auto"
           >
             <p className="text-[#a1a1aa] text-sm uppercase tracking-widest font-semibold mb-6 flex items-center">
               <span className="w-4 h-px bg-[#a1a1aa] mr-3"></span> Introduction

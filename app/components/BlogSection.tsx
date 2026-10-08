@@ -30,7 +30,7 @@ const testimonials = [
     quote: "Working with Stephan was an outstanding experience. He delivered a high-quality product that exceeded our expectations while maintaining excellent communication throughout the entire project. Truly one of the best professionals I’ve worked with.",
     name: "Jude Muoghalu",
     title: "CEO of Tech-Engines software associates.",
-    image: "/images/bit.png",
+    image: "/images/jude1.jpg",
   },
   {
     id: 2,
